@@ -64,12 +64,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'deka_backend.urls'
 
-FRONTEND_DIR = 'deka-frontend'
+FRONTEND_DIR = 'deka-frontend/dist'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, FRONTEND_DIR)
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,18 +85,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'deka_backend.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -138,7 +128,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, '../static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
-    os.path.join(BASE_DIR, FRONTEND_DIR)
+    os.path.join(BASE_DIR, FRONTEND_DIR),
+    os.path.join(BASE_DIR, FRONTEND_DIR, 'static')
 )
 
 REST_FRAMEWORK = {
