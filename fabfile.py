@@ -57,5 +57,5 @@ class Deploy(fabutils.GunicornMixin,
 
 
 fabutils.register_class(Deploy, settings)
-fabutils.register_class(fabutils.LocalDatabaseOperations, settings)
+fabutils.register_class(PostgresqlDatabaseOperations, settings)
 fabutils.register_class(fabutils.RemoteDatabaseOperations, settings)
