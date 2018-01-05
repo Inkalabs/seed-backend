@@ -14,7 +14,9 @@ class Deploy(fabutils.GunicornMixin,
     """
     Base deployment class, do not use it directly in the commands
     """
-    database_handler = fabutils.PostgresqlDatabaseBackup
+    db_backup_handler_class = fabutils.PostgresqlDatabaseBackup
+    db_restore_handler_class = fabutils.PostgresqlDatabaseRestore
+
     frontend_dir = 'deka-frontend'
 
     def deploy_tasks(self):
