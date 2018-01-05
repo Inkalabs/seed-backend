@@ -1,27 +1,26 @@
 import os
 import environ
 
-
-root = environ.Path(__file__) - 2
-env = environ.Env(
+ROOT = environ.Path(__file__) - 2
+ENV = environ.Env(
     DEBUG=(bool, False), ALLOWED_HOSTS=(list, []), ENVIRONMENTS=(dict, {}))
-environ.Env.read_env('%s/.env' % str(root - 1))
+environ.Env.read_env('%s/.env' % str(ROOT - 1))
 
-DEBUG = env.bool('DEBUG')
+DEBUG = ENV.bool('DEBUG')
 
-BASE_DIR = root()
+BASE_DIR = ROOT()
 
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = ENV('SECRET_KEY')
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
+ALLOWED_HOSTS = ENV.list('ALLOWED_HOSTS', default=[])
 
 DATABASES = {
-    'default': env.db()
+    'default': ENV.db()
 }
 
-ENVIRONMENTS = env.json('ENVIRONMENTS')
+ENVIRONMENTS = ENV.json('ENVIRONMENTS')
 
-EMAIL_CONFIG = env.email_url('EMAIL_URL', default='consolemail://localhost:25')
+EMAIL_CONFIG = ENV.email_url('EMAIL_URL', default='consolemail://localhost:25')
 EMAIL_BACKEND = EMAIL_CONFIG.get('EMAIL_BACKEND')
 EMAIL_HOST = EMAIL_CONFIG.get('EMAIL_HOST')
 EMAIL_HOST_PASSWORD = EMAIL_CONFIG.get('EMAIL_HOST_PASSWORD')
@@ -42,11 +41,11 @@ THIRD_PARTY_APPS = [
     'rest_framework',
 ]
 
-OWN_APPS = []  # fabutils, log-viewer
+OWN_APPS = ['log_viewer']  # fabutils, log-viewer
 
 PROJECT_APPS = []
 
-ENV_APPS = env.list('APPS', default=[])
+ENV_APPS = ENV.list('APPS', default=[])
 
 INSTALLED_APPS = (
     DJANGO_APPS + THIRD_PARTY_APPS + OWN_APPS + PROJECT_APPS + ENV_APPS
@@ -71,7 +70,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, FRONTEND_DIR)
+            os.path.join(BASE_DIR, FRONTEND_DIR),
+            os.path.join(BASE_DIR, 'templates')
+
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -141,3 +142,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ),
 }
+
+LOGS_DIR = 'logs'
+
+DB_BACKUP_DIR = os.path.join(BASE_DIR, '../backups/')
