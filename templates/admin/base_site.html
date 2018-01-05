@@ -1,0 +1,13 @@
+{% extends "admin/base.html" %}
+ {% load admin_static %}{% load i18n %}
+ 
+ {% block branding %}
+ <h1 id="site-name"><a href="{% url 'admin:index' %}">Django Administration</a></h1>
+ {% endblock %}
+ 
+ {% block nav-global %}
+     {% comment %}
+     <a href="{% url 'docs_root'%}" target="_blank" class="icon"><i class="icon-th-list "></i>Documentation</a>
+     {% endcomment %}
+     <a href="{% url 'log-viewer:logfile-view' '' %}" target="_blank" class="icon"><i class="icon-th-list "></i>Log Files</a>
+ {% endblock %}

@@ -18,5 +18,6 @@ for module_name, module_data in frontend_modules.items():
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('admin/log_viewer/', include(('log_viewer.urls', "log-viewer"), namespace='log-viewer')),
     # path('api/', include(api_urlpatterns, namespace='api')),
 ] + frontend_urls
