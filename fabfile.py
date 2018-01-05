@@ -9,14 +9,17 @@ django.settings_module('deka_backend.settings')
 fabutils.autodiscover_environments(settings)
 
 
+class PostgresqlDatabaseOperations(fabutils.LocalDatabaseOperations):
+    db_backup_handler_class = fabutils.PostgresqlDatabaseBackup
+    db_restore_handler_class = fabutils.PostgresqlDatabaseRestore
+
+
 class Deploy(fabutils.GunicornMixin,
              fabutils.VirtualenvMixin, fabutils.Deployment):
     """
     Base deployment class, do not use it directly in the commands
     """
-    db_backup_handler_class = fabutils.PostgresqlDatabaseBackup
-    db_restore_handler_class = fabutils.PostgresqlDatabaseRestore
-
+    database_handler = fabutils.PostgresqlDatabaseBackup
     frontend_dir = 'deka-frontend'
 
     def deploy_tasks(self):
