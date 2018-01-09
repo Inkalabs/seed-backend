@@ -1,3 +1,37 @@
+### Inkalabs Backend Seed
+
+This repository is intended for use as a base for new projects in Inkalabs.
+
+It is meant to be used with https://bitbucket.org/inkalabsinc/seed-frontend as a single web application.
+
+This project template includes the follwoing standards used in the company:
+
+* Fabutils
+* Environment Variables
+* Django Rest
+* Integration with frontend
+
+In order to start your own project with this one as a base use the following command
+
+```
+$ django-admin.py startproject --template=https://github.com/Inkalabs/seed-backend/archive/master.zip mynewproject
+```
+
+Once this is done, you will need a .env file one directory before this one with the following structure:
+
+```
+DEBUG=on
+SECRET_KEY=<your_key>
+DATABASE_URL=psql://user@localhost:5432/db_name
+ENVIRONMENTS={"dev": {"hosts": ["user@server.com"], "core_dir": "/var/www/somedir/", "gunicorn_pid": "/path/to/pid.pid", "gunicorn_server_socket": "127.0.0.1:9050", "gunicorn_user": "user", "is_production": false,  "is_staging": false, "domain_name": "my-domain", "token_logger": "getfromredmine", "branch": "master"}}
+ALLOWED_HOSTS=localhost
+```
+
+Finally you will be able to run the project with all the standards in place.
+
+
+This section of the readme is for you to edit in order to use your own project_name
+
 # {{ project_name }}
 
 
