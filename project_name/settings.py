@@ -62,9 +62,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'deka_backend.urls'
+ROOT_URLCONF = '{{ project_name }}.urls'
 
-FRONTEND_DIR = 'deka-frontend/dist'
+FRONTEND_DIR = '{{ project_name }}-frontend/dist'
 
 TEMPLATES = [
     {
@@ -86,7 +86,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'deka_backend.wsgi.application'
+WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators

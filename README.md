@@ -1,4 +1,4 @@
-# Deka-backend
+# {{ project_name }}
 
 
 ## Installation
@@ -43,10 +43,10 @@ $ /etc/init.d/postgresql restart
 ### Create a virtualenv
 
 ```
-$ python3 -m venv deka
+$ python3 -m venv {{ project_name }}
 ```
 
-This command will create a new folder with the name `deka`
+This command will create a new folder with the name `{{ project_name }}`
 
 ### Clone the project
 
@@ -57,11 +57,11 @@ then if you dont have a key that points to your computer follow this tutorials:
 * https://confluence.atlassian.com/bitbucket/add-an-ssh-key-to-an-account-302811853.html
 
 ```
-$ git clone git@bitbucket.org:inkalabsinc/deka-backend.git
+$ git clone git@bitbucket.org:inkalabsinc/{{ project_name }}.git
 ```
 
 ### Activate your enviroment
-Inside the `deka` folder run the following command
+Inside the `{{ project_name }}` folder run the following command
 
 ```
 $ source bin/activate
@@ -70,28 +70,28 @@ $ source bin/activate
 After this you will see the virtualenv name in your prompt. i.e.:
 
 ```
-(deka) $
+({{ project_name }}) $
 ```
 
 ### Install requirements
 ```
-(deka)$ cd deka-backend
+({{ project_name }})$ cd {{ project_name }}-backend
 
-(deka)$ pip install -r requirements.txt
+({{ project_name }})$ pip install -r requirements.txt
 ```
 
 ### Setting up environment variables for project
 
-Add the .env file like: https://redmine.fincite.net/projects/deka-poc/wiki/Internal_information
+Add the .env file like: https://redmine.fincite.net/projects/{{ project_name }}/wiki/Internal_information
 
 ### Run the project
 
 Once you have everything ok, you can run the project.
 
 ```
-(deka) $ ./manage.py check
+({{ project_name }}) $ ./manage.py check
 
-(deka) $ ./manage.py migrate
+({{ project_name }}) $ ./manage.py migrate
 
-(deka) $ ./manage.py runserver
+({{ project_name }}) $ ./manage.py runserver
 ```
